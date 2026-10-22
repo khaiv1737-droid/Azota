@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Đề Thi Azota Địa Lý</title>
+    <style>
+        /* Khung giao diện chung */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Giao diện hộp đăng nhập */
+        #login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        #login-box h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        #login-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #login-box button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        #login-box button:hover {
+            background-color: #0056b3;
+        }
+
+        #error-msg {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Giao diện nội dung chính sau khi mở khóa */
+        #main-content {
+            display: none; /* Ẩn đi lúc đầu */
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .header-title {
+            color: #198754;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .azota-main-btn {
+            display: block;
+            background-color: #ffc107;
+            color: #212529;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 25px;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .azota-main-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .list-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #495057;
+            border-left: 5px solid #198754;
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+
+        .link-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #dee2e6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .link-item span {
+            font-weight: 600;
+            color: #343a40;
+            margin-bottom: 5px;
+        }
+
+        .link-item a {
+            color: #0d6efd;
+            text-decoration: none;
+            word-break: break-all;
+            font-size: 14px;
+        }
+
+        .link-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PHẦN 1: KHUNG ĐĂNG NHẬP BẢO MẬT -->
+    <div id="login-box">
+        <h2>🔒 Yêu Cầu Mật Khẩu</h2>
+        <p>Vui lòng nhập mật khẩu để truy cập kho đề thi.</p>
+        <input type="password" id="password" placeholder="Nhập mật khẩu tại đây...">
+        <button onclick="checkPassword()">Xác Nhận</button>
+        <div id="error-msg"></div>
+    </div>
+
+    <!-- PHẦN 2: NỘI DUNG CHÍNH (SẼ HIỆN KHI NHẬP ĐÚNG) -->
+    <div id="main-content">
+        <h2 class="header-title">Trang Quản Lý Đề Thi Azota</h2>
+        
+        <!-- Mục đầu tiên nhấn vào hiện link và tự chuyển hướng -->
+        <a href="https://azota.vn" target="_blank" class="azota-main-btn" onclick="alert('Đang hiển thị link và chuyển hướng tới: https://azota.vn')">
+            🔗 Đi đến Trang chủ Azota
+        </a>
+
+        <!-- Danh sách mục Azota Địa -->
+        <div class="list-title">Danh Sách Đề Thi Địa Lý</div>
+        
+        <div class="link-item">
+            <span>Đề thi Địa lý 01:</span>
+            <a href="https://azota.vn/de-thi/xtjrqu" target="_blank">https://azota.vn/de-thi/xtjrqu</a>
+        </div>
+
+        <div class="link-item">
+            <span>Đề thi Địa lý 02:</span>
+            <a href="https://azota.vn/de-thi/fcgiem" target="_blank">https://azota.vn/de-thi/fcgiem</a>
+        </div>
+
+        <div class="link-item">
+            <span>Đề thi Địa lý 03:</span>
+            <a href="https://azota.vn/de-thi/ujiwv3" target="_blank">https://azota.vn/de-thi/ujiwv3</a>
+        </div>
+    </div>
+
+    <!-- XỬ LÝ SỰ KIỆN JAVASCRIPT -->
+    <script>
+        let wrongAttempts = 0; // Biến đếm số lần nhập sai
+
+        function checkPassword() {
+            const inputPass = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error-msg');
+            
+            // Mật khẩu chính xác của bạn
+            const correctPass = "010203040506070809"; 
+
+            if (inputPass === correctPass) {
+                // Nếu đúng: Ẩn hộp đăng nhập và hiển thị nội dung web
+                document.getElementById('login-box').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                // Nếu sai: Tăng số lần nhập sai lên 1
+                wrongAttempts++;
+                
+                if (wrongAttempts >= 3) {
+                    errorMsg.innerHTML = "Đã nhập sai quá 3 lần! Đang đẩy bạn ra khỏi trang...";
+                    document.getElementById('password').disabled = true;
+                    
+                    // Thực hiện văng ra khỏi trang (Chuyển hướng sang trang trắng Google sau 1 giây)
+                    setTimeout(function() {
+                        window.location.href = "https://google.com";
+                    }, 1000);
+                } else {
+                    errorMsg.innerHTML = "Mật khẩu không đúng! Bạn còn " + (3 - wrongAttempts) + " lần thử.";
+                }
+            }
+        }
+
+        // Cho phép nhấn nút Enter trên bàn phím để kích hoạt nút Xác nhận
+        document.getElementById('password').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
